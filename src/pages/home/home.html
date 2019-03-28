@@ -1,19 +1,40 @@
 <ion-header>
-  <ion-navbar>
-      <ion-buttons end>
-          <button ion-button icon-only [navPush]="addPlacePage">
-            <ion-icon name="add" color="energized"></ion-icon>
-          </button>
-        </ion-buttons>
+  <ion-navbar color="primary">
+    <ion-buttons end>
+      <button ion-button icon-only [navPush]="addPlacePage">
+        <ion-icon name="add" color="white"></ion-icon>
+      </button>
+    </ion-buttons>
     <ion-title>
-      Location of Place
+      Description of Place
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-card *ngFor="let place of places" >
+    <ion-card-content text-center>
+      <ion-card-title>
+        {{place.title}}
+      </ion-card-title>
+      <ion-card-title>
+      <p>{{place.description}}</p>
+    </ion-card-title>
+    <ion-grid>
+    <ion-row>
+        <ion-col>
+          <agm-map
+            [latitude]="place.location.lat"
+            [longitude]="place.location.lng"
+            [zoom]="16">
+            <agm-marker
+                [latitude]="place.location.lat"
+                [longitude]="place.location.lng"></agm-marker>
+          
+          </agm-map>
+        </ion-col>
+      </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <ion-title>Add a Place</ion-title>
   </ion-navbar>
 </ion-header>
@@ -42,12 +42,13 @@
         </ion-row>
     </ion-grid>
     
-
-        <p>Geolocation Latitude: {{this.location.lat}}</p>
-        <p>Gelocation Longitude: {{this.location.lng}}</p>
-       
+      <ion-card>
         
-
+          <div class="card-subtitle">Geolocation Latitude: {{this.location.lat}}</div>
+          <div class="card-subtitle">Geolocation Longitude: {{this.location.lng}}</div>
+        
+        </ion-card>
+       
   
         <button  ion-button color="secondary" block type="submit" [disabled]="!f.valid || !locationIsSet">
           Add this Place
